@@ -1,35 +1,33 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        shuffle-app
-      </h1>
-      <h2 class="subtitle">
-        Shuffle App
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+    <div class="flex mb-4">
+      <div class="w-full">
+        <div v-for="(table, index) in tables" v-bind:key="table.id">
+          <Tables :table="table" :index="index" />
+        </div>
+      </div>
+    </div>
+    <div class="flex mb-4">
+      <div class="w-full">
+        <tableCounter />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import TableCounter from '~/components/TableCounter.vue'
+import Tables from '~/components/Tables.vue'
 
 export default {
   components: {
-    Logo
+    TableCounter,
+    Tables
+  },
+  computed: {
+    tables() {
+      return this.$store.state.counter.tables
+    }
   }
 }
 </script>
