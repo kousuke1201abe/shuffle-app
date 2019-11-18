@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="inline-flex">
-      <p class="p-2">座席</p>
-      <button @click="addSeat(index)" class="p-2 rounded-l">
+      <p class="p-2">{{ count }}人掛け</p>
+      <button @click="addTableSize" class="p-2 rounded-l">
         <svg
           class="fill-current w-4 h-4 hover:text-red-400"
           xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@
           />
         </svg>
       </button>
-      <button @click="subtractSeat(index)" class="p-2 rounded-r">
+      <button @click="subtractTableSize" class="p-2 rounded-r">
         <svg
           class="fill-current w-4 h-4 hover:text-red-400"
           xmlns="http://www.w3.org/2000/svg"
@@ -30,13 +30,17 @@
 
 <script>
 export default {
-  props: ['index'],
+  computed: {
+    count() {
+      return this.$store.state.counter.tableSize
+    }
+  },
   methods: {
-    addSeat(index) {
-      this.$store.commit('counter/addSeat', index)
+    addTableSize(e) {
+      this.$store.commit('counter/addTableSize')
     },
-    subtractSeat(index) {
-      this.$store.commit('counter/subtractSeat', index)
+    subtractTableSize(e) {
+      this.$store.commit('counter/subtractTableSize')
     }
   }
 }

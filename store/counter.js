@@ -1,5 +1,6 @@
 export const state = () => ({
-  tables: [{ seat: 1 }]
+  tableSize: 4,
+  tables: [{ seats: 4 }]
 })
 
 export const mutations = {
@@ -13,8 +14,18 @@ export const mutations = {
       state.tables.pop()
     }
   },
+  addTableSize(state) {
+    if (state.tableSize < 10) {
+      state.tableSize += 2
+    }
+  },
+  subtractTableSize(state) {
+    if (state.tableSize > 2) {
+      state.tableSize -= 2
+    }
+  },
   addSeat(state, index) {
-    if (state.tables[index].seats < 5) {
+    if (state.tables[index].seats < state.tableSize) {
       state.tables[index].seats += 1
     }
   },

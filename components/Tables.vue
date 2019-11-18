@@ -1,44 +1,72 @@
 <template>
   <div class="m-10">
-    <div class="flex mb-4">
-      <div class="w-full">
-        <div v-for="seats in table.seats" v-bind:key="seats">
-          <Seats />
-        </div>
+    <div class="flex justify-center">
+      <div v-for="seats in (index, frontSeats)" v-bind:key="seats.id">
+        <Seat />
       </div>
     </div>
-    <svg width="120px" height="70px">
-      <rect
-        x="10"
-        y="10"
-        width="100"
-        height="50"
-        stroke="black"
-        stroke-width="1"
-        fill="none"
-      />
-    </svg>
+    <div>
+      <div class="flex justify-center">
+        <svg :style="svgWidth" height="70px">
+          <rect
+            x="10"
+            y="10"
+            height="50"
+            stroke="black"
+            stroke-width="1"
+            fill="none"
+            :style="rectWidth"
+          />
+        </svg>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <div v-for="seats in backSeats" v-bind:key="seats.id">
+        <Seat class="w-1/12 h-12" />
+      </div>
+    </div>
     <div class="flex mb-4">
       <div class="w-full">
-        <seatCounter :count="table.seats" :index="index" />
+        <seatCounter :index="index" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Seats from '~/components/Seats.vue'
+import Seat from '~/components/Seat.vue'
 import SeatCounter from '~/components/SeatCounter.vue'
 
 export default {
   components: {
-    Seats,
+    Seat,
     SeatCounter
   },
-  props: ['table', 'index'],
+  props: ['table', 'index', 'tableSize'],
   computed: {
-    seats() {
-      return this.$store.state.counter.tables.length
+    frontSeats() {
+      if (this.table.seats % 2 === 0) {
+        return this.table.seats / 2
+      } else {
+        return (this.table.seats + 1) / 2
+      }
+    },
+    backSeats() {
+      if (this.table.seats % 2 === 0) {
+        return this.table.seats / 2
+      } else {
+        return (this.table.seats - 1) / 2
+      }
+    },
+    svgWidth() {
+      return {
+        width: this.tableSize * 22 + 20
+      }
+    },
+    rectWidth() {
+      return {
+        width: this.tableSize * 22
+      }
     }
   }
 }
