@@ -3,36 +3,30 @@
     <div class="flex mb-4">
       <div class="w-full">
         <div v-for="(table, index) in tables" v-bind:key="table.id">
-          <Tables :table="table" :index="index" :tableSize="tableSize" />
+          <Tables :table="table" :index="index" />
         </div>
       </div>
     </div>
     <div class="flex mb-4">
       <div class="w-full">
         <tableCounter />
-        <tableSizeCounter />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import TableSizeCounter from '~/components/TableSizeCounter.vue'
 import TableCounter from '~/components/TableCounter.vue'
 import Tables from '~/components/Tables.vue'
 
 export default {
   components: {
-    TableSizeCounter,
     TableCounter,
     Tables
   },
   computed: {
     tables() {
       return this.$store.state.counter.tables
-    },
-    tableSize() {
-      return this.$store.state.counter.tableSize
     }
   }
 }

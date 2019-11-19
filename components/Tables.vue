@@ -2,27 +2,27 @@
   <div class="m-10">
     <div class="flex justify-center">
       <div v-for="seats in (index, frontSeats)" v-bind:key="seats.id">
-        <Seat />
+        <Seat class="mx-1" />
       </div>
     </div>
     <div>
       <div class="flex justify-center">
-        <svg :style="svgWidth" height="70px">
+        <svg :style="svgWidth(table.seats)" height="70px">
           <rect
+            :style="rectWidth(table.seats)"
             x="10"
             y="10"
             height="50"
             stroke="black"
             stroke-width="1"
             fill="none"
-            :style="rectWidth"
           />
         </svg>
       </div>
     </div>
     <div class="flex justify-center">
       <div v-for="seats in backSeats" v-bind:key="seats.id">
-        <Seat class="w-1/12 h-12" />
+        <Seat class="mx-1" />
       </div>
     </div>
     <div class="flex mb-4">
@@ -42,7 +42,7 @@ export default {
     Seat,
     SeatCounter
   },
-  props: ['table', 'index', 'tableSize'],
+  props: ['table', 'index'],
   computed: {
     frontSeats() {
       if (this.table.seats % 2 === 0) {
@@ -57,15 +57,17 @@ export default {
       } else {
         return (this.table.seats - 1) / 2
       }
-    },
-    svgWidth() {
+    }
+  },
+  methods: {
+    svgWidth(seats) {
       return {
-        width: this.tableSize * 22 + 20
+        width: seats * 30 + 20
       }
     },
-    rectWidth() {
+    rectWidth(seats) {
       return {
-        width: this.tableSize * 22
+        width: seats * 30
       }
     }
   }
