@@ -48,7 +48,7 @@ const createStore = () => {
       setTableRef: firestoreAction(({ bindFirestoreRef }, id) => {
         bindFirestoreRef('data', db.collection('tables').doc(String(id)))
       })
-    },
+    }
   })
 }
 

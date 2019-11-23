@@ -6,21 +6,24 @@
         0
       )"
       v-bind:key="a.id"
-      class="flex-col m-2 border-b border-b-2 border-teal-500 m-5"
     >
-      <input
-        v-model="names[index]"
-        type="text"
-        class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-        placeholder="名前"
-      />
+      <div class="flex-col flex py-3">
+        <input
+          v-model="names[index]"
+          type="text"
+          class="p-2 shadow rounded-lg bg-gray-100 outline-none focus:bg-gray-200"
+          placeholder="名前"
+        />
+      </div>
     </div>
-    <button
-      @click="shuffle"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-    >
-      shuffle!
-    </button>
+    <div class="flex-col flex py-3">
+      <button
+        @click="shuffle"
+        class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-3 px-4 mt-3 rounded-full"
+      >
+        shuffle!
+      </button>
+    </div>
   </div>
 </template>
 

@@ -1,33 +1,26 @@
 <template>
   <div>
-    <div class="inline-flex">
-      <p class="p-2">テーブル</p>
-      <button @click="addTable" class="p-2 rounded-l">
-        <svg
-          class="fill-current w-4 h-4 hover:text-red-400"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path
-            d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2v4zm-1 11a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
-          />
-        </svg>
+    <label
+      for="custom-input-number"
+      class="w-full text-blue-500 text-lg font-semibold"
+      >テーブル
+    </label>
+    <div class="mt-2">
+      <button
+        @click="subtractTable"
+        class="text-white bg-blue-500 hover:bg-blue-700 h-full w-20 rounded-l cursor-pointer outline-none"
+      >
+        <span class="m-auto text-2xl font-semibold">−</span>
       </button>
-      <button @click="subtractTable" class="p-2 rounded-r">
-        <svg
-          class="fill-current w-4 h-4 hover:text-red-400"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path
-            d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm5-9v2H5V9h10z"
-          />
-        </svg>
+      <button
+        @click="addTable"
+        class="text-white bg-blue-500 hover:bg-blue-700 h-full w-20 rounded-r cursor-pointer"
+      >
+        <span class="m-auto text-2xl font-semibold">+</span>
       </button>
     </div>
   </div>
 </template>
-
 <script>
 export default {
   methods: {

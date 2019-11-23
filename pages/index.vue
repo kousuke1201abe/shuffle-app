@@ -1,15 +1,23 @@
 <template>
-  <div class="container">
-    <div class="flex mb-4">
-      <div class="w-full">
-        <div v-for="(table, index) in tables" v-bind:key="table.id">
-          <Tables :table="table" :index="index" />
-        </div>
+  <div>
+    <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-3">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <span class="font-semibold text-2xl tracking-tight ml-3">shuffle!</span>
       </div>
-    </div>
-    <div class="flex mb-4">
-      <div class="w-full rounded overflow-hidden shadow-lg p-5">
+    </nav>
+    <div class="md:p-12 bg-indigo-100 flex flex-row flex-wrap justify-center">
+      <div class="md:w-1/2-screen m-0 p-5 w-full tw-h-full text-center">
         <tableCounter />
+      </div>
+      <div v-for="(table, index) in tables" v-bind:key="table.id">
+        <Tables :table="table" :index="index" />
+      </div>
+      <div
+        class="md:w-1/2-screen m-0 p-5 bg-white w-full tw-h-full shadow md:rounded-lg"
+      >
+        <div class="text-2xl text-indigo-900 mb-2">
+          <small class="pl-2 text-gray-500">参加者を入力してください</small>
+        </div>
         <Form />
       </div>
     </div>

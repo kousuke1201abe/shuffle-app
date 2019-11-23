@@ -1,5 +1,5 @@
 <template>
-  <div class="m-10">
+  <div class="mb-10 mx-3 bg-white rounded shadow p-5">
     <div class="flex justify-center">
       <div v-for="seats in (index, frontSeats)" v-bind:key="seats.id">
         <Seat :seat="seats" class="mx-1" />
@@ -26,8 +26,8 @@
       </div>
     </div>
     <div class="flex mb-4">
-      <div class="w-full">
-        <seatCounter :index="index" />
+      <div class="md:w-1/2-screen m-0 p-5 w-full tw-h-full text-center">
+        <seatCounter :index="index" v-if="this.$route.query.q === undefined" />
       </div>
     </div>
   </div>
