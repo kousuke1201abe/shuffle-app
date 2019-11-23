@@ -17,13 +17,13 @@ export default {
   components: {
     Tables
   },
-  created() {
-    this.$store.dispatch('setTableRef', this.$route.query.q)
-  },
   computed: {
     tables() {
       return this.$store.state.data.tables
     }
+  },
+  created() {
+    this.$store.dispatch('setTableRef', this.$route.query.q)
   }
 }
 </script>

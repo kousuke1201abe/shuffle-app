@@ -34,29 +34,19 @@ const createStore = () => {
         }
       },
       mapNames(state, object) {
-        // state.tables.forEach((table) =>
-        //   table.seats.forEach((seat) => {
-        //     seat.name = object.names[0]
-        //     object.names.shift()
-        //   })
-        // )
+        state.data.tables.forEach((table) =>
+          table.seats.forEach((seat) => {
+            seat.name = object.names[0]
+            object.names.shift()
+          })
+        )
         const tablesRef = db.collection('tables')
         tablesRef.doc(object.urlCode).set(state.data)
       }
     },
     actions: {
       setTableRef: firestoreAction(({ bindFirestoreRef }, id) => {
-        db.collection('tables').doc(id).get().then(function(doc) {
-          if (doc.exists) {
-              console.log("Document data:", doc.data());
-          } else {
-              // doc.data() will be undefined in this case
-              console.log("No such document!");
-          }
-      }).catch(function(error) {
-          console.log("Error getting document:", error);
-      });
-        // bindFirestoreRef('data', db.collection('tables').doc(id))
+        bindFirestoreRef('data', db.collection('tables').doc(id))
       })
     },
     getters: {
