@@ -2,14 +2,14 @@
   <div class="m-10">
     <div class="flex justify-center">
       <div v-for="seats in (index, frontSeats)" v-bind:key="seats.id">
-        <Seat class="mx-1" />
+        <Seat :seat="seats" class="mx-1" />
       </div>
     </div>
     <div>
       <div class="flex justify-center">
-        <svg :style="svgWidth(table.seats)" height="70px">
+        <svg :style="svgWidth(table.seats.length)" height="70px">
           <rect
-            :style="rectWidth(table.seats)"
+            :style="rectWidth(table.seats.length)"
             x="10"
             y="10"
             height="50"
@@ -21,8 +21,8 @@
       </div>
     </div>
     <div class="flex justify-center">
-      <div v-for="seats in backSeats" v-bind:key="seats.id">
-        <Seat class="mx-1" />
+      <div v-for="seats in (index, backSeats)" v-bind:key="seats.id">
+        <Seat :seat="seats" class="mx-1" />
       </div>
     </div>
     <div class="flex mb-4">
@@ -45,17 +45,23 @@ export default {
   props: ['table', 'index'],
   computed: {
     frontSeats() {
-      if (this.table.seats % 2 === 0) {
-        return this.table.seats / 2
+      if (this.table.seats.length % 2 === 0) {
+        return this.table.seats.slice(0, this.table.seats.length / 2)
       } else {
-        return (this.table.seats + 1) / 2
+        return this.table.seats.slice(0, (this.table.seats.length + 1) / 2)
       }
     },
     backSeats() {
-      if (this.table.seats % 2 === 0) {
-        return this.table.seats / 2
+      if (this.table.seats.length % 2 === 0) {
+        return this.table.seats.slice(
+          this.table.seats.length / 2,
+          this.table.seats.length
+        )
       } else {
-        return (this.table.seats - 1) / 2
+        return this.table.seats.slice(
+          (this.table.seats.length + 1) / 2,
+          this.table.seats.length
+        )
       }
     }
   },

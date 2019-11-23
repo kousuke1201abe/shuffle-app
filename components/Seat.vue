@@ -11,5 +11,12 @@
         fill="none"
       />
     </svg>
+    {{ seat.name }}
   </div>
 </template>
+
+<script>
+export default {
+  props: ['seat']
+}
+</script>
