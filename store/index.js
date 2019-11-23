@@ -46,14 +46,9 @@ const createStore = () => {
     },
     actions: {
       setTableRef: firestoreAction(({ bindFirestoreRef }, id) => {
-        bindFirestoreRef('data', db.collection('tables').doc(id))
+        bindFirestoreRef('data', db.collection('tables').doc(String(id)))
       })
     },
-    getters: {
-      getUsers: (state) => {
-        return state.users
-      }
-    }
   })
 }
 
