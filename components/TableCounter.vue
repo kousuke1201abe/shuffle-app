@@ -32,10 +32,10 @@
 export default {
   methods: {
     addTable(e) {
-      this.$store.commit('counter/addTable')
+      this.$store.commit('addTable')
     },
     subtractTable(e) {
-      this.$store.commit('counter/subtractTable')
+      this.$store.commit('subtractTable')
     }
   }
 }

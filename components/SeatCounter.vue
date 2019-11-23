@@ -33,10 +33,10 @@ export default {
   props: ['index'],
   methods: {
     addSeat(index) {
-      this.$store.commit('counter/addSeat', index)
+      this.$store.commit('addSeat', index)
     },
     subtractSeat(index) {
-      this.$store.commit('counter/subtractSeat', index)
+      this.$store.commit('subtractSeat', index)
     }
   }
 }

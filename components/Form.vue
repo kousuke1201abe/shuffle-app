@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-for="(a, index) in this.$store.state.counter.tables.reduce(
+      v-for="(a, index) in this.$store.state.tables.reduce(
         (p, x) => p + x.seats.length,
         0
       )"
@@ -33,14 +33,16 @@ export default {
   },
   methods: {
     shuffle() {
-      console.log(this.names)
       for (let i = this.names.length - 1; i > 0; i--) {
         const r = Math.floor(Math.random() * (i + 1))
         const tmp = this.names[i]
         this.names[i] = this.names[r]
         this.names[r] = tmp
       }
-      this.$store.commit('counter/mapNames', this.names)
+      const nanoid = require('nanoid')
+      const urlCode = nanoid()
+      this.$store.commit('mapNames', { names: this.names, urlCode })
+      this.$router.push({ path: 'result', query: { q: urlCode } })
     }
   }
 }
