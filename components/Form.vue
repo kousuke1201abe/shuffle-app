@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      v-for="(a, index) in this.$store.state.tables.reduce(
+      v-for="(a, index) in this.$store.state.data.tables.reduce(
         (p, x) => p + x.seats.length,
         0
       )"

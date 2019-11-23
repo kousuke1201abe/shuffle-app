@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     tables() {
-      return this.$store.state.tables
+      return this.$store.state.data.tables
     }
   }
 }
