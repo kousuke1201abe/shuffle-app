@@ -1,11 +1,17 @@
 <template>
   <div>
-    <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-3">
+    <nav
+      class="flex items-center justify-between flex-wrap bg-blue-500 text-purple-100  p-3"
+    >
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <span class="font-semibold text-2xl tracking-tight ml-3">shuffle!</span>
+        <nuxt-link
+          to="/"
+          class="font-semibold text-2xl tracking-tight ml-3 cursor-pointer"
+          >shuffle!</nuxt-link
+        >
       </div>
     </nav>
-    <div class="md:p-12 bg-indigo-100 flex flex-row flex-wrap justify-center">
+    <div class="md:p-12 bg-blue-100 flex flex-row flex-wrap justify-center">
       <div class="md:w-1/2-screen m-0 p-5 w-full tw-h-full text-center">
         <tableCounter />
       </div>

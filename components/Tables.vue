@@ -1,45 +1,48 @@
 <template>
-  <div class="mb-10 mx-3 bg-white rounded shadow p-5">
-    <div class="flex justify-center">
+  <div class="mb-10 mx-3 bg-white rounded shadow">
+    <div class="flex justify-center pt-4">
       <div v-for="seats in (index, frontSeats)" v-bind:key="seats.id">
-        <Seat :seat="seats" class="mx-1" />
+        <FrontSeat :seat="seats" class="mx-1" />
       </div>
     </div>
     <div>
-      <div class="flex justify-center">
+      <div class="flex justify-center px-2">
         <svg :style="svgWidth(table.seats.length)" height="70px">
           <rect
             :style="rectWidth(table.seats.length)"
             x="10"
             y="10"
+            rx="3"
             height="50"
-            stroke="black"
+            stroke="grey"
             stroke-width="1"
-            fill="none"
+            style="fill:#4299E1;stroke-width:0"
           />
         </svg>
       </div>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center mb-4">
       <div v-for="seats in (index, backSeats)" v-bind:key="seats.id">
-        <Seat :seat="seats" class="mx-1" />
+        <BackSeat :seat="seats" class="mx-1" />
       </div>
     </div>
-    <div class="flex mb-4">
+    <div v-if="this.$route.query.q === undefined" class="flex mb-4 border-t">
       <div class="md:w-1/2-screen m-0 p-5 w-full tw-h-full text-center">
-        <seatCounter :index="index" v-if="this.$route.query.q === undefined" />
+        <seatCounter :index="index" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Seat from '~/components/Seat.vue'
+import FrontSeat from '~/components/frontSeat.vue'
+import BackSeat from '~/components/backSeat.vue'
 import SeatCounter from '~/components/SeatCounter.vue'
 
 export default {
   components: {
-    Seat,
+    FrontSeat,
+    BackSeat,
     SeatCounter
   },
   props: ['table', 'index'],

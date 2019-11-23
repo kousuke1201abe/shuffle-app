@@ -19,7 +19,7 @@
     <div class="flex-col flex py-3">
       <button
         @click="shuffle"
-        class="bg-blue-500 hover:bg-blue-700 text-white text-xl font-bold py-3 px-4 mt-3 rounded-full"
+        class="bg-blue-500 text-purple-100  hover:bg-blue-500 text-purple-100  text-white text-xl font-bold py-3 px-4 mt-3 rounded-full"
       >
         shuffle!
       </button>

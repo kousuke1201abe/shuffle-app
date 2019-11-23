@@ -15,7 +15,7 @@ const createStore = () => {
       ...vuexfireMutations,
       addTable(state) {
         if (state.data.tables.length < 5) {
-          state.data.tables.push({ seats: [{ name: '' }] })
+          state.data.tables.push({ seats: [{ name: '' }, { name: '' }] })
         }
       },
       subtractTable(state) {
