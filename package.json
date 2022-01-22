@@ -17,7 +17,7 @@
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "firebase": "^7.5.0",
-    "nanoid": "^2.1.7",
+    "nanoid": "^3.1.31",
     "nuxt": "^2.0.0",
     "vue": "^2.6.10",
     "vuexfire": "^3.2.0"
